@@ -3,16 +3,20 @@ const app = express();
 const mongoose = require('mongoose')
 const Product = require('./models/productModel')
 
+
 app.use(express.json()) //json files send and recieve middleware
 app.use(express.urlencoded({extended:false}));
+
 
 app.listen(3000,()=>{
     console.log('Server is running on port 3000');
 });
 
+
 app.get("/",(req,res)=>{
     res.send("Hello World ");
 });
+
 
 app.get("/users",(req,res)=>{
     res.send("Welcome to users");
@@ -83,8 +87,6 @@ app.post('/api/product',async (req,res) =>{
     // console.log(req.body);
     // res.send("Data Recieved");
 });
-
 mongoose.connect('mongodb://localhost:27017/test')
   .then(() => console.log('Connected to DB!'))
   .catch("Connection Failed!");
-
